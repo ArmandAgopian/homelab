@@ -13,3 +13,25 @@ provider "proxmox" {
     pm_api_token_secret = var.PM_API_TOKEN_SECRET
     pm_tls_insecure    = true
 }
+
+resource "proxmox_lxc" "k3s_node" {
+  vmid        = 100
+  target_node = "proxmox"
+  ostemplate  = "local:vztmpl/ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
+  hostname    = "k3s-node"
+  cores       = 2
+  memory      = 5120
+
+  rootfs {
+    storage = "local-lvm"
+    size    = "20G"
+  }
+
+  network {
+    name   = "eth0"
+    bridge = "vmbr0"
+    ip     = "dhcp"
+  }
+
+  ssh_public_keys = var.SSH_PUBLIC_KEYS
+}
