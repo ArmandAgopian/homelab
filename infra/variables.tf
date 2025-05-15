@@ -1,3 +1,7 @@
+variable "PM_API_URL" {
+    type = string
+}
+
 variable "PM_API_TOKEN_ID" {
     type = string
 }
