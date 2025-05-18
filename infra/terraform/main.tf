@@ -35,6 +35,11 @@ resource "proxmox_lxc" "k3s_node" {
   }
 
   ssh_public_keys = var.SSH_PUBLIC_KEYS
-
   onboot = true
+
+  # DOES NOT CONNECT TO INTERNET WITHOUT BELOW LINE
+  unprivileged = true
+  
+  # Web UI does not work without shell
+  cmode = "shell"
 }
