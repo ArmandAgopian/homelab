@@ -34,4 +34,6 @@ resource "proxmox_lxc" "k3s_node" {
   }
 
   ssh_public_keys = var.SSH_PUBLIC_KEYS
+
+  onboot = true
 }
