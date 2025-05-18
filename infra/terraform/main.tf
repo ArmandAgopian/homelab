@@ -30,6 +30,7 @@ resource "proxmox_lxc" "k3s_node" {
   network {
     name   = "eth0"
     bridge = "vmbr0"
+    hwaddr = "BC:24:11:9C:84:24"
     ip     = "dhcp"
   }
 
