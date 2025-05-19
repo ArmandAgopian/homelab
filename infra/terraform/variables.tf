@@ -1,4 +1,4 @@
-variable "PM_API_URL" {
+variable "PM_API_HOSTNAME" {
     type = string
 }
 
